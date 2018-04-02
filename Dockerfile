@@ -9,6 +9,7 @@ RUN apk -U add \
     php7-dom \
     php7-fpm \
     php7-gd \
+    php7-gmp \
     php7-json \
     php7-iconv \
     php7-mbstring \
