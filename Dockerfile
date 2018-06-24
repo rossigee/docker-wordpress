@@ -12,6 +12,7 @@ RUN apk -U add \
     php7-gmp \
     php7-json \
     php7-iconv \
+    php7-ldap \
     php7-mbstring \
     php7-mcrypt \
     php7-memcached \
@@ -21,7 +22,6 @@ RUN apk -U add \
     php7-simplexml \
     php7-xml \
     php7-xmlrpc \
-    php7-zlib \
     openssh-client rsync \
     curl zip unzip
 
@@ -29,9 +29,7 @@ RUN apk -U add \
 RUN mkdir /run/nginx /run/php /var/www/public_html
 
 # Direct nginx logs to Docker console output
-RUN rm -f /var/log/nginx/* && \
-    ln -sf /dev/stdout /var/log/nginx/access.log && \
-    ln -sf /dev/stderr /var/log/nginx/error.log
+RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 #VOLUME /var/www/public_html
 WORKDIR /var/www/public_html
