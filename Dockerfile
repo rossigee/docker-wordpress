@@ -1,27 +1,31 @@
 FROM alpine:latest
 
+ADD https://php.codecasts.rocks/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
+
+RUN apk --update add ca-certificates wget curl && \
+    echo "@php https://php.codecasts.rocks/v3.7/php-7.2" >> /etc/apk/repositories
+
 RUN apk -U add \
     supervisor \
     nginx \
-    php7-bcmath \
-    php7-ctype \
-    php7-curl \
-    php7-dom \
-    php7-fpm \
-    php7-gd \
-    php7-gmp \
-    php7-json \
-    php7-iconv \
-    php7-ldap \
-    php7-mbstring \
-    php7-mcrypt \
-    php7-memcached \
-    php7-mysqli \
-    php7-mysqlnd \
-    php7-redis \
-    php7-simplexml \
-    php7-xml \
-    php7-xmlrpc \
+    php-bcmath@php \
+    php-ctype@php \
+    php-curl@php \
+    php-dom@php \
+    php-fpm@php \
+    php-gd@php \
+    php-gmp@php \
+    php-json@php \
+    php-iconv@php \
+    php-ldap@php \
+    php-mbstring@php \
+    php-memcached@php \
+    php-mysqli@php \
+    php-mysqlnd@php \
+    php-redis@php \
+    php-xml@php \
+    php-xmlrpc@php \
+    php-xdebug@php \
     openssh-client rsync \
     curl zip unzip
 
