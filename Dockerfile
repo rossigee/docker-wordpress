@@ -57,8 +57,8 @@ RUN rm -f /var/log/nginx/* && \
 COPY docker/php-fpm.conf /etc/php/7.2/fpm/pool.d/www.conf
 
 # Create our document root and install WordPress into it
-RUN mkdir -p /srv/wordpress && \
+RUN mkdir -p /var/www/public_html && \
     curl -L --silent https://wordpress.org/wordpress-latest.tar.gz | \
-      tar -xz --strip=1 -C /srv/wordpress
-WORKDIR /srv/wordpress
+      tar -xz --strip=1 -C /var/www/public_html
+WORKDIR /var/www/public_html
 

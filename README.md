@@ -10,5 +10,5 @@ To build:
 
 To run:
 
-	docker run --restart=always -d -p 80:80 --link wordpress-db:db -v wordpress-docroot:/srv/wordpress --name wordpress rossigee/wordpress
+	docker run --restart=always -d -p 80:80 --link wordpress-db:db -v wordpress-docroot:/var/www/public_html --name wordpress rossigee/wordpress
 
