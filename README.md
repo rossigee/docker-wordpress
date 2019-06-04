@@ -1,6 +1,6 @@
 # Wordpress Docker
 
-Based on Alpine, with Nginx and PHP-FPM.
+Based on Ubuntu Bionic, with Nginx and PHP-FPM.
 
 Can be extended and built with on-board document root (suitable for scaling deployments), or with document root mounted from a volume, which may/may not be scalable.
 
@@ -10,5 +10,5 @@ To build:
 
 To run:
 
-	docker run --restart=always -d -p 80:80 --link wordpress-db:db -v wordpress-docroot:/docroot --name wordpress rossigee/wordpress
+	docker run --restart=always -d -p 80:80 --link wordpress-db:db -v wordpress-docroot:/srv/wordpress --name wordpress rossigee/wordpress
 
