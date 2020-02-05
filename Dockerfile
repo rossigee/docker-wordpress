@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 # Set terminal to be noninteractive
 ENV DEBIAN_FRONTEND noninteractive
@@ -15,18 +15,18 @@ RUN apt-get update && \
         ca-certificates \
         nginx \
         phpunit \
-        php7.2-cli \
-        php7.2-fpm \
-        php7.2-bcmath \
-        php7.2-curl \
-        php7.2-gd \
-        php7.2-json \
-        php7.2-ldap \
-        php7.2-mbstring \
-        php7.2-mysql \
-        php7.2-xml \
-        php7.2-xmlrpc \
-        php7.2-zip \
+        php7.3-cli \
+        php7.3-fpm \
+        php7.3-bcmath \
+        php7.3-curl \
+        php7.3-gd \
+        php7.3-json \
+        php7.3-ldap \
+        php7.3-mbstring \
+        php7.3-mysql \
+        php7.3-xml \
+        php7.3-xmlrpc \
+        php7.3-zip \
         php-memcached \
         php-redis \
         && \
@@ -54,7 +54,7 @@ RUN rm -f /var/log/nginx/* && \
 # Install PHP configurations
 
 # Ensure PARAM* envvars are passed through PHP FPM, and it's listening on port 9000
-COPY docker/php-fpm.conf /etc/php/7.2/fpm/pool.d/www.conf
+COPY docker/php-fpm.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 # Create our document root and install WordPress into it
 RUN mkdir -p /var/www/public_html && \
