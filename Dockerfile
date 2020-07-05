@@ -1,5 +1,7 @@
 FROM ubuntu:focal
 
+ENV VERSION=5.4.2
+
 # Set terminal to be noninteractive
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -59,7 +61,7 @@ COPY docker/php-fpm.conf /etc/php/7.4/fpm/pool.d/www.conf
 
 # Create our document root and install WordPress into it
 RUN mkdir -p /var/www/public_html && \
-    curl -L --silent https://wordpress.org/wordpress-latest.tar.gz | \
+    curl -sSL https://wordpress.org/wordpress-$VERSION.tar.gz | \
       tar -xz --strip=1 -C /var/www/public_html
 WORKDIR /var/www/public_html
 
