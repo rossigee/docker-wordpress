@@ -15,26 +15,27 @@ RUN apt-get update && \
         ca-certificates \
         nginx \
         phpunit \
-        php7.3-cli \
-        php7.3-fpm \
-        php7.3-bcmath \
-        php7.3-curl \
-        php7.3-gd \
-        php7.3-json \
-        php7.3-ldap \
-        php7.3-mbstring \
-        php7.3-mysql \
-        php7.3-xml \
-        php7.3-xmlrpc \
-        php7.3-zip \
+        php7.4-cli \
+        php7.4-fpm \
+        php7.4-bcmath \
+        php7.4-curl \
+        php7.4-gd \
+        php7.4-json \
+        php7.4-ldap \
+        php7.4-mbstring \
+        php7.4-mysql \
+        php7.4-xml \
+        php7.4-xmlrpc \
+        php7.4-zip \
         php-memcached \
-        php-redis \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Not sure why this doesn't get created by the distro package above
-RUN mkdir /run/php
+# Hack/workaround: https://bugs.launchpad.net/bugs/1872156
+RUN cd /tmp && \
+    curl -O http://ftp.jp.debian.org/debian/pool/main/p/php-redis/php-redis_5.2.1+4.3.0-1+b1_amd64.deb && \
+    dpkg -i php-redis_5.2.1+4.3.0-1+b1_amd64.deb
 
 # Supervisor will manage the nginx and php processes
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
@@ -54,7 +55,7 @@ RUN rm -f /var/log/nginx/* && \
 # Install PHP configurations
 
 # Ensure PARAM* envvars are passed through PHP FPM, and it's listening on port 9000
-COPY docker/php-fpm.conf /etc/php/7.3/fpm/pool.d/www.conf
+COPY docker/php-fpm.conf /etc/php/7.4/fpm/pool.d/www.conf
 
 # Create our document root and install WordPress into it
 RUN mkdir -p /var/www/public_html && \
