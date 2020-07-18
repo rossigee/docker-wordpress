@@ -36,8 +36,8 @@ RUN apt-get update && \
 
 # Hack/workaround: https://bugs.launchpad.net/bugs/1872156
 RUN cd /tmp && \
-    curl -O http://ftp.jp.debian.org/debian/pool/main/p/php-redis/php-redis_5.2.1+4.3.0-1+b1_amd64.deb && \
-    dpkg -i php-redis_5.2.1+4.3.0-1+b1_amd64.deb
+    curl -O http://ftp.jp.debian.org/debian/pool/main/p/php-redis/php-redis_5.3.1+4.3.0-1_amd64.deb && \
+    dpkg -i php-redis_5.3.1+4.3.0-1_amd64.deb
 
 # Supervisor will manage the nginx and php processes
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
