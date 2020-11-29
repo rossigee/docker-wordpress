@@ -1,6 +1,6 @@
 FROM ubuntu:focal
 
-ENV VERSION=5.4.2
+ENV VERSION=5.5.3
 
 # Set terminal to be noninteractive
 ENV DEBIAN_FRONTEND noninteractive
